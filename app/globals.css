@@ -3,7 +3,7 @@
   @tailwind utilities;
 
   html, body, :root{
-    @apply h-full
+    @apply h-full;
   }
 
   @layer base {
