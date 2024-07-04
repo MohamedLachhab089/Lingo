@@ -22,27 +22,27 @@ const main = async () => {
     await db.delete(schema.userSubscription);
 
     await db.insert(schema.courses).values([
-        {
-            id: 1,
-            title: "Spanish",
-            imageSrc: "/images_lingo/es.svg",
-        },
-        {
-            id: 2,
-            title: "French",
-            imageSrc: "/images_lingo/fr.svg",
-        },
-        {
-            id: 3,
-            title: "Italian",
-            imageSrc: "/images_lingo/it.svg",
-        },
-        {
-            id: 4,
-            title: "Croatian",
-            imageSrc: "/images_lingo/hr.svg",
-        }
-    ])
+      {
+        id: 1,
+        title: "Spanish",
+        imageSrc: "/images_lingo/es.svg",
+      },
+      {
+        id: 2,
+        title: "French",
+        imageSrc: "/images_lingo/fr.svg",
+      },
+      {
+        id: 3,
+        title: "Italian",
+        imageSrc: "/images_lingo/it.svg",
+      },
+      {
+        id: 4,
+        title: "Croatian",
+        imageSrc: "/images_lingo/hr.svg",
+      },
+    ]);
 
     await db.insert(schema.units).values([
       {
@@ -51,7 +51,7 @@ const main = async () => {
         title: "Unit 1",
         description: "Learn the basics of Spanish",
         order: 1,
-      }
+      },
     ]);
 
     await db.insert(schema.lessons).values([
@@ -95,6 +95,20 @@ const main = async () => {
         order: 1,
         question: 'Which one of these is the "the man"?',
       },
+      {
+        id: 2,
+        lessonId: 1, // Nouns
+        type: "ASSIST",
+        order: 2,
+        question: '"the man"',
+      },
+      {
+        id: 3,
+        lessonId: 1, // Nouns
+        type: "SELECT",
+        order: 3,
+        question: 'Which one of these is the "the robot"?',
+      },
     ]);
 
     await db.insert(schema.challengeOptions).values([
@@ -116,6 +130,51 @@ const main = async () => {
         challengeId: 1,
         imageSrc: "/images_lingo/robot.svg",
         correct: false,
+        text: "el robot",
+        audioSrc: "/images_lingo/es_robot.mp3",
+      },
+    ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 2, // "the man"?
+        correct: true,
+        text: "el hombre",
+        audioSrc: "/images_lingo/es_man.mp3",
+      },
+      {
+        challengeId: 2,
+        correct: false,
+        text: "la mujer",
+        audioSrc: "/images_lingo/es_woman.mp3",
+      },
+      {
+        challengeId: 2,
+        correct: false,
+        text: "el robot",
+        audioSrc: "/images_lingo/es_robot.mp3",
+      },
+    ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 3, // Which one of these is the "the robot"?
+        imageSrc: "/images_lingo/man.svg",
+        correct: false,
+        text: "el hombre",
+        audioSrc: "/images_lingo/es_man.mp3",
+      },
+      {
+        challengeId: 3,
+        imageSrc: "/images_lingo/woman.svg",
+        correct: false,
+        text: "la mujer",
+        audioSrc: "/images_lingo/es_woman.mp3",
+      },
+      {
+        challengeId: 3,
+        imageSrc: "/images_lingo/robot.svg",
+        correct: true,
         text: "el robot",
         audioSrc: "/images_lingo/es_robot.mp3",
       },
