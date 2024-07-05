@@ -5,6 +5,8 @@ import { getUserProgress, getUserSubscription } from "@/db/queries";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { Items } from "./items";
+import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 
 const ShopPage = async () => {
   const userProgressData = getUserProgress();
@@ -28,15 +30,13 @@ const ShopPage = async () => {
           points={userProgress.points}
           hasActiveSubscription={isPro}
         />
+        {!isPro && <Promo />}
+
+        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <div className="flex w-full flex-col items-center">
-          <Image
-            src="/images_lingo/shop.svg"
-            alt="Shop"
-            height={90}
-            width={90}
-          />
+          <Image src="/images/shop.svg" alt="Shop" height={90} width={90} />
 
           <h1 className="my-6 text-center text-2xl font-bold text-neutral-800">
             Shop

@@ -1,14 +1,18 @@
 "use server";
 
 import { auth, currentUser } from "@clerk/nextjs/server";
-import { getCourseById, getUserProgress } from "@/db/queries";
+import {
+  getCourseById,
+  getUserProgress,
+  getUserSubscription,
+} from "@/db/queries";
 import db from "@/db/drizzle";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { and, eq } from "drizzle-orm";
+import { POINTS_TO_REFILL } from "@/constants";
 
-const POINTS_TO_REFILL = 10;
 
 export const upsertUserProgress = async (courseId: number) => {
   const { userId } = auth();
@@ -20,8 +24,8 @@ export const upsertUserProgress = async (courseId: number) => {
 
   if (!course) throw new Error("Course not found.");
 
-  // if (!course.units.length || !course.units[0].lessons.length)
-  //   throw new Error("Course is empty.");
+  if (!course.units.length || !course.units[0].lessons.length)
+    throw new Error("Course is empty.");
 
   const existingUserProgress = await getUserProgress();
 
@@ -29,7 +33,7 @@ export const upsertUserProgress = async (courseId: number) => {
     await db.update(userProgress).set({
       activeCourseId: courseId,
       userName: user.firstName || "User",
-      userImageSrc: user.imageUrl || "/images_lingo/mascot.svg",
+      userImageSrc: user.imageUrl || "/images/mascot.svg",
     });
 
     revalidatePath("/courses");
@@ -41,7 +45,7 @@ export const upsertUserProgress = async (courseId: number) => {
     userId,
     activeCourseId: courseId,
     userName: user.firstName || "User",
-    userImageSrc: user.imageUrl || "/images_lingo/mascot.svg",
+    userImageSrc: user.imageUrl || "/images/mascot.svg",
   });
 
   revalidatePath("/courses");
@@ -55,6 +59,7 @@ export const reduceHearts = async (challengeId: number) => {
   if (!userId) throw new Error("Unauthorized");
 
   const currentUserProgress = await getUserProgress();
+  const userSubscription = await getUserSubscription();
 
   const challenge = await db.query.challenges.findFirst({
     where: eq(challenges.id, challengeId),
@@ -75,6 +80,8 @@ export const reduceHearts = async (challengeId: number) => {
   if (isPractice) return { error: "practice" };
 
   if (!currentUserProgress) throw new Error("User progress not found");
+
+  if (userSubscription?.isActive) return { error: "subscription" };
 
   if (currentUserProgress.hearts === 0) {
     return { error: "hearts" };

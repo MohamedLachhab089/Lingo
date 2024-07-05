@@ -8,8 +8,8 @@ type ResultCardProps = {
   variant: "points" | "hearts";
 };
 
-export const ResultCard = ({ value, variant }: ResultCardProps) => {
-  const imageSrc = variant === "points" ? "/images_lingo/points.svg" : "/images_lingo/heart.svg";
+export const ResultCard = ({ value, variant, userSubscription }: ResultCardProps & { userSubscription?: boolean }) => {
+  const imageSrc = variant === "hearts" ? "/images/heart.svg" : "/images/points.svg";
 
   return (
     <div
@@ -44,7 +44,7 @@ export const ResultCard = ({ value, variant }: ResultCardProps) => {
           className="mr-1.5"
         />
         {value === Infinity ? (
-          <InfinityIcon className="h-6 w-6 stroke-[3]" />
+          <InfinityIcon className="h-6 w-6 stroke-[3] shrink-0" />
         ) : (
           value
         )}

@@ -16,7 +16,7 @@ export const Header = () => {
       <div className="lg:max-w-screen-lg mx-auto flex items-center justify-between h-full">
         <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
           <Image
-            src="/images_Lingo/mascot.svg"
+            src="/images/mascot.svg"
             height={40}
             width={40}
             alt="Mascot"

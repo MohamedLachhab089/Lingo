@@ -25,11 +25,9 @@ type Props = {
     completed: boolean;
     challengeOptions: (typeof challengeOptions.$inferSelect)[];
   })[];
-  userSubscription:
-    | (typeof userSubscription.$inferSelect & {
-        isActive: boolean;
-      })
-    | null;
+  userSubscription: typeof userSubscription.$inferSelect & {
+    isActive: boolean;
+  } | null;
 };
 
 export const Quiz = ({
@@ -49,14 +47,14 @@ export const Quiz = ({
   const { width, height } = useWindowSize();
 
   const [finishAudio] = useAudio({
-    src: "/images_lingo/public_finish.mp3",
+    src: "/images/public_finish.mp3",
     autoPlay: true,
   });
   const [correctAudio, _c, correctControls] = useAudio({
-    src: "/images_lingo/public_correct.wav",
+    src: "/images/public_correct.wav",
   });
   const [incorrectAudio, _i, incorrectControls] = useAudio({
-    src: "/images_lingo/public_incorrect.wav",
+    src: "/images/public_incorrect.wav",
   });
   const [pending, startTransition] = useTransition();
 
@@ -164,14 +162,14 @@ export const Quiz = ({
         />
         <div className="flex flex-col gap-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
           <Image
-            src="/images_lingo/finish.svg"
+            src="/images/finish.svg"
             alt="Finish"
             className="hidden lg:block"
             height={100}
             width={100}
           />
           <Image
-            src="/images_lingo/finish.svg"
+            src="/images/finish.svg"
             alt="Finish"
             className="block lg:hidden"
             height={50}

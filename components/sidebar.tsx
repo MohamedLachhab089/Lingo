@@ -21,7 +21,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
       <Link href="/learn">
         <div className="flex items-center gap-x-3 pb-7 pl-4 pt-8">
           <Image
-            src="/images_lingo/mascot.svg"
+            src="/images/mascot.svg"
             alt="Mascot"
             height={40}
             width={40}
@@ -37,22 +37,22 @@ export const Sidebar = ({ className }: SidebarProps) => {
         <SidebarItem
           label="Learn"
           href="/learn"
-          iconSrc="/images_lingo/learn.svg"
+          iconSrc="/images/learn.svg"
         />
         <SidebarItem
           label="Leaderboard"
           href="/leaderboard"
-          iconSrc="/images_lingo/leaderboard.svg"
+          iconSrc="/images/leaderboard.svg"
         />
         <SidebarItem
           label="Quests"
           href="/quests"
-          iconSrc="/images_lingo/quests.svg"
+          iconSrc="/images/quests.svg"
         />
         <SidebarItem
           label="Shop"
           href="/shop"
-          iconSrc="/images_lingo/shop.svg"
+          iconSrc="/images/shop.svg"
         />
       </div>
 
