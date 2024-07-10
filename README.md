@@ -6,8 +6,11 @@
 🧰 Getting Started
 
 Make sure Git and NodeJS is installed.
+
 Clone this repository to your local computer.
+
 Create .env file in root directory.
+
 Contents of .env:
 
 # .env
@@ -17,13 +20,15 @@ NEXT_TELEMETRY_DISABLED=1
 
 # clerk auth keys
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 CLERK_SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 # neon db uri
 DATABASE_URL="postgresql://<user>:<password>@<host>:<post>/lingo?sslmode=require"
 
 # stripe api key and webhook
-STRIPE_API_SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+STRIPE_API_SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 STRIPE_WEBHOOK_SECRET=whsec_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 # public app url
@@ -102,4 +107,14 @@ NOTE: Please make sure to keep your API keys and configuration values secure and
 
 ⚙️ Tech Stack
 
-React JS Next JS Typescript Tailwind CSS Vercel Postgresql
+React JS 
+
+Next JS 
+
+Typescript 
+
+Tailwind CSS 
+
+Vercel 
+
+Postgresql
