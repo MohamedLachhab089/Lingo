@@ -4,6 +4,7 @@
 
 
 🧰 Getting Started
+
 Make sure Git and NodeJS is installed.
 Clone this repository to your local computer.
 Create .env file in root directory.
