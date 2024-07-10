@@ -199,4 +199,5 @@ NOTE: Please make sure to keep your API keys and configuration values secure and
 <img width="960" alt="image" src="https://github.com/MohamedLachhab089/Lingo/assets/165306415/24d297e3-f2b2-4c33-b286-71185f6ae249">
 
 ⚙️ Tech Stack
+
 React JS Next JS Typescript Tailwind CSS Vercel Postgresql
