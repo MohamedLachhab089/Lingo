@@ -2,6 +2,7 @@ Lingo - Interactive platform for language learning.
 ![img_main](https://github.com/MohamedLachhab089/Lingo/assets/165306415/8d0a5399-efe7-4c69-82fa-63dbadd30c1e)
 
 ‼️ Folder Structure
+
 duolingo-clone/
   |- actions/
     |- challenge-progress.ts
